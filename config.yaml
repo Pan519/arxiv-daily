@@ -1,0 +1,347 @@
+# arXiv 全部分类
+keywords:
+  # 全部分类
+  "All Categories":
+    filters: []
+
+  # 物理学相关分类
+  "Astrophysics":
+    filters: ["astro-ph"]
+  "Galaxies":
+    filters: ["astro-ph.GA"]
+  "Cosmology":
+    filters: ["astro-ph.CO"]
+  "Earth and Planetary Astrophysics":
+    filters: ["astro-ph.EP"]
+  "High Energy Astrophysical Phenomena":
+    filters: ["astro-ph.HE"]
+  "Instrumentation and Methods for Astrophysics":
+    filters: ["astro-ph.IM"]
+  "Solar and Stellar Astrophysics":
+    filters: ["astro-ph.SR"]
+  
+  "Condensed Matter":
+    filters: ["cond-mat"]
+  "Disordered Systems and Neural Networks":
+    filters: ["cond-mat.dis-nn"]
+  "Materials Science":
+    filters: ["cond-mat.mtrl-sci"]
+  "Mesoscale and Nanoscale Physics":
+    filters: ["cond-mat.mes-hall"]
+  "Other Condensed Matter":
+    filters: ["cond-mat.other"]
+  "Quantum Gases":
+    filters: ["cond-mat.quant-gas"]
+  "Soft Condensed Matter":
+    filters: ["cond-mat.soft"]
+  "Statistical Mechanics":
+    filters: ["cond-mat.stat-mech"]
+  "Strongly Correlated Electrons":
+    filters: ["cond-mat.str-el"]
+  "Superconductivity":
+    filters: ["cond-mat.supr-con"]
+  
+  "General Relativity and Quantum Cosmology":
+    filters: ["gr-qc"]
+  "High Energy Physics - Experiment":
+    filters: ["hep-ex"]
+  "High Energy Physics - Lattice":
+    filters: ["hep-lat"]
+  "High Energy Physics - Phenomenology":
+    filters: ["hep-ph"]
+  "High Energy Physics - Theory":
+    filters: ["hep-th"]
+  "Mathematical Physics":
+    filters: ["math-ph"]
+  
+  "Nonlinear Sciences":
+    filters: ["nlin"]
+  "Adaptation and Self-Organizing Systems":
+    filters: ["nlin.AO"]
+  "Cellular Automata and Lattice Gases":
+    filters: ["nlin.CG"]
+  "Chaotic Dynamics":
+    filters: ["nlin.CD"]
+  "Exactly Solvable and Integrable Systems":
+    filters: ["nlin.SI"]
+  "Pattern Formation and Solitons":
+    filters: ["nlin.PS"]
+  
+  "Nuclear Experiment":
+    filters: ["nucl-ex"]
+  "Nuclear Theory":
+    filters: ["nucl-th"]
+  
+  "Physics":
+    filters: ["physics"]
+  "Accelerator Physics":
+    filters: ["physics.acc-ph"]
+  "Applied Physics":
+    filters: ["physics.app-ph"]
+  "Atmospheric and Oceanic Physics":
+    filters: ["physics.ao-ph"]
+  "Atomic and Molecular Clusters":
+    filters: ["physics.atm-clus"]
+  "Atomic Physics":
+    filters: ["physics.atom-ph"]
+  "Biological Physics":
+    filters: ["physics.bio-ph"]
+  "Chemical Physics":
+    filters: ["physics.chem-ph"]
+  "Classical Physics":
+    filters: ["physics.class-ph"]
+  "Computational Physics":
+    filters: ["physics.comp-ph"]
+  "Data Analysis, Statistics and Probability":
+    filters: ["physics.data-an"]
+  "Fluid Dynamics":
+    filters: ["physics.flu-dyn"]
+  "General Physics":
+    filters: ["physics.gen-ph"]
+  "Geophysics":
+    filters: ["physics.geo-ph"]
+  "History and Philosophy of Physics":
+    filters: ["physics.hist-ph"]
+  "Instrumentation and Detectors":
+    filters: ["physics.ins-det"]
+  "Medical Physics":
+    filters: ["physics.med-ph"]
+  "Optics":
+    filters: ["physics.optics"]
+  "Physics and Society":
+    filters: ["physics.soc-ph"]
+  "Physics Education":
+    filters: ["physics.ed-ph"]
+  "Plasma Physics":
+    filters: ["physics.plasm-ph"]
+  "Popular Physics":
+    filters: ["physics.pop-ph"]
+  "Space Physics":
+    filters: ["physics.space-ph"]
+  
+  "Quantum Physics":
+    filters: ["quant-ph"]
+  
+  # 数学相关分类
+  "Mathematics":
+    filters: ["math"]
+  "Algebraic Geometry":
+    filters: ["math.AG"]
+  "Algebraic Topology":
+    filters: ["math.AT"]
+  "Analysis of PDEs":
+    filters: ["math.AP"]
+  "Category Theory":
+    filters: ["math.CT"]
+  "Classical Analysis and ODEs":
+    filters: ["math.CA"]
+  "Combinatorics":
+    filters: ["math.CO"]
+  "Commutative Algebra":
+    filters: ["math.AC"]
+  "Complex Variables":
+    filters: ["math.CV"]
+  "Differential Geometry":
+    filters: ["math.DG"]
+  "Dynamical Systems":
+    filters: ["math.DS"]
+  "Functional Analysis":
+    filters: ["math.FA"]
+  "General Mathematics":
+    filters: ["math.GM"]
+  "General Topology":
+    filters: ["math.GN"]
+  "Geometric Topology":
+    filters: ["math.GT"]
+  "Group Theory":
+    filters: ["math.GR"]
+  "History and Overview":
+    filters: ["math.HO"]
+  "Information Theory":
+    filters: ["cs.IT"]
+  "K-Theory and Homology":
+    filters: ["math.KT"]
+  "Logic":
+    filters: ["math.LO"]
+  "Metric Geometry":
+    filters: ["math.MG"]
+  "Number Theory":
+    filters: ["math.NT"]
+  "Numerical Analysis":
+    filters: ["math.NA"]
+  "Operator Algebras":
+    filters: ["math.OA"]
+  "Optimization and Control":
+    filters: ["math.OC"]
+  "Probability":
+    filters: ["math.PR"]
+  "Quantum Algebra":
+    filters: ["math.QA"]
+  "Representation Theory":
+    filters: ["math.RT"]
+  "Rings and Algebras":
+    filters: ["math.RA"]
+  "Spectral Theory":
+    filters: ["math.SP"]
+  "Statistics Theory":
+    filters: ["math.ST"]
+  "Symplectic Geometry":
+    filters: ["math.SG"]
+  
+  # 计算机科学相关分类
+  "Computer Science":
+    filters: ["cs"]
+  "Artificial Intelligence":
+    filters: ["cs.AI"]
+  "Computation and Language":
+    filters: ["cs.CL"]
+  "Computational Complexity":
+    filters: ["cs.CC"]
+  "Computational Engineering, Finance, and Science":
+    filters: ["cs.CE"]
+  "Computational Geometry":
+    filters: ["cs.CG"]
+  "Computer Science and Game Theory":
+    filters: ["cs.GT"]
+  "Computer Vision and Pattern Recognition":
+    filters: ["cs.CV"]
+  "Computers and Society":
+    filters: ["cs.CY"]
+  "Cryptography and Security":
+    filters: ["cs.CR"]
+  "Data Structures and Algorithms":
+    filters: ["cs.DS"]
+  "Databases":
+    filters: ["cs.DB"]
+  "Digital Libraries":
+    filters: ["cs.DL"]
+  "Discrete Mathematics":
+    filters: ["cs.DM"]
+  "Distributed, Parallel, and Cluster Computing":
+    filters: ["cs.DC"]
+  "Emerging Technologies":
+    filters: ["cs.ET"]
+  "Formal Languages and Automata Theory":
+    filters: ["cs.FL"]
+  "General Literature":
+    filters: ["cs.GL"]
+  "Graphics":
+    filters: ["cs.GR"]
+  "Hardware Architecture":
+    filters: ["cs.AR"]
+  "Human-Computer Interaction":
+    filters: ["cs.HC"]
+  "Information Retrieval":
+    filters: ["cs.IR"]
+  "Logic in Computer Science":
+    filters: ["cs.LO"]
+  "Machine Learning":
+    filters: ["cs.LG"]
+  "Mathematical Software":
+    filters: ["cs.MS"]
+  "Multiagent Systems":
+    filters: ["cs.MA"]
+  "Multimedia":
+    filters: ["cs.MM"]
+  "Networking and Internet Architecture":
+    filters: ["cs.NI"]
+  "Neural and Evolutionary Computing":
+    filters: ["cs.NE"]
+  "Operating Systems":
+    filters: ["cs.OS"]
+  "Other Computer Science":
+    filters: ["cs.OH"]
+  "Performance":
+    filters: ["cs.PF"]
+  "Programming Languages":
+    filters: ["cs.PL"]
+  "Robotics":
+    filters: ["cs.RO"]
+  "Social and Information Networks":
+    filters: ["cs.SI"]
+  "Software Engineering":
+    filters: ["cs.SE"]
+  "Sound":
+    filters: ["cs.SD"]
+  "Symbolic Computation":
+    filters: ["cs.SC"]
+  "Systems and Control":
+    filters: ["cs.SY"]
+  
+  # 定量生物学
+  "Quantitative Biology":
+    filters: ["q-bio"]
+  "Biomolecules":
+    filters: ["q-bio.BM"]
+  "Cell Behavior":
+    filters: ["q-bio.CB"]
+  "Genomics":
+    filters: ["q-bio.GN"]
+  "Molecular Networks":
+    filters: ["q-bio.MN"]
+  "Neurons and Cognition":
+    filters: ["q-bio.NC"]
+  "Other Quantitative Biology":
+    filters: ["q-bio.OT"]
+  "Populations and Evolution":
+    filters: ["q-bio.PE"]
+  "Quantitative Methods":
+    filters: ["q-bio.QM"]
+  "Subcellular Processes":
+    filters: ["q-bio.SC"]
+  "Tissues and Organs":
+    filters: ["q-bio.TO"]
+  
+  # 定量金融学
+  "Quantitative Finance":
+    filters: ["q-fin"]
+  "Computational Finance":
+    filters: ["q-fin.CP"]
+  "Economics":
+    filters: ["q-fin.EC"]
+  "General Finance":
+    filters: ["q-fin.GN"]
+  "Mathematical Finance":
+    filters: ["q-fin.MF"]
+  "Portfolio Management":
+    filters: ["q-fin.PM"]
+  "Pricing of Securities":
+    filters: ["q-fin.PR"]
+  "Risk Management":
+    filters: ["q-fin.RM"]
+  "Statistical Finance":
+    filters: ["q-fin.ST"]
+  "Trading and Market Microstructure":
+    filters: ["q-fin.TR"]
+  
+  # 统计学
+  "Statistics":
+    filters: ["stat"]
+  "Applications":
+    filters: ["stat.AP"]
+  "Computation":
+    filters: ["stat.CO"]
+  "Machine Learning":
+    filters: ["stat.ML"]
+  "Methodology":
+    filters: ["stat.ME"]
+  "Other Statistics":
+    filters: ["stat.OT"]
+  "Statistics Theory":
+    filters: ["stat.TH"]
+  
+  # 电气工程与系统科学
+  "Electrical Engineering and Systems Science":
+    filters: ["eess"]
+  "Audio and Speech Processing":
+    filters: ["eess.AS"]
+  "Image and Video Processing":
+    filters: ["eess.IV"]
+  "Signal Processing":
+    filters: ["eess.SP"]
+  "Systems and Control":
+    filters: ["eess.SY"]
+  
+  # 经济学
+  "Economics":
+    filters: ["econ"]
