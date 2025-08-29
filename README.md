@@ -4,15 +4,22 @@
 
 ## 目录
 
-1. [arXiv 论文元数据收集工具](#arxiv-论文元数据收集工具)
-2. [Arxiv PDF到GCS路径转换器](#arxiv-pdf到gcs路径转换器)
-3. [GCS链接转换规则说明](#gcs链接转换规则说明)
+1. [项目概述](#项目概述)
+2. [功能特性](#功能特性)
+3. [安装依赖](#安装依赖)
+4. [项目文件说明](#项目文件说明)
+5. [使用方法](#使用方法)
+6. [输出文件](#输出文件)
+7. [注意事项](#注意事项)
+8. [故障排除](#故障排除)
+9. [开发说明](#开发说明)
+10. [许可证](#许可证)
 
 ---
 
-## arXiv 论文元数据收集工具
+## 项目概述
 
-这是一个用于收集 arXiv 论文元数据的工具，支持按分类和日期范围收集论文信息，并将数据保存为结构化的 JSON 文件。
+本项目提供了一套完整的工具集，用于从 arXiv 获取论文元数据、处理和转换数据格式，以及将 arXiv PDF 链接转换为 Google Cloud Storage (GCS) 路径。工具集包括论文元数据收集、PDF链接提取、JSON到CSV转换、数据清理去重、以及GCS路径转换等功能。
 
 ## 功能特性
 
@@ -25,13 +32,14 @@
 - 将JSON数据导出为CSV格式
 - 清理和去重JSON数据
 - 将arXiv PDF链接转换为Google Cloud Storage (GCS)路径
+- 多线程处理提高转换效率
 
 ## 安装依赖
 
 在使用此工具之前，请确保安装了所需的依赖项：
 
 ```bash
-pip install arxiv
+pip install arxiv requests
 ```
 
 ## 项目文件说明
@@ -42,7 +50,7 @@ pip install arxiv
 - `clean_json.py` - 清理和去重JSON数据
 - `arxiv_converter.py` - 将arXiv PDF链接转换为GCS路径
 - `check_gcs_status.py` - 检查GCS存储桶状态
-- `config.yaml` - 配置文件
+- `config.yaml` - 配置文件，包含arXiv所有分类信息
 - `./metadata/` - 数据存储目录
 
 ## 使用方法
@@ -66,7 +74,7 @@ python daily_arxiv.py [--max_results N] [--date-range YYYY-MM-DD,YYYY-MM-DD] [--
 
 #### 1. 按分类收集最新的论文
 
-```
+```bash
 # 收集每个分类最新的100篇论文
 python daily_arxiv.py
 
@@ -79,7 +87,7 @@ python daily_arxiv.py --include-category-stats
 
 #### 2. 按日期范围收集论文
 
-```
+```bash
 # 收集2025年8月1日至28日的所有论文，每个分类最多100篇
 python daily_arxiv.py --date-range 2025-08-01,2025-08-28
 
@@ -89,7 +97,7 @@ python daily_arxiv.py --date-range 2025-08-01,2025-08-28 --max-results 5
 
 #### 3. 跳过无日期后缀的文件
 
-```
+```bash
 # 收集论文并跳过加载无日期后缀的旧文件
 python daily_arxiv.py --date-range 2025-08-01,2025-08-28 --skip-no-date-files
 
@@ -103,7 +111,7 @@ python daily_arxiv.py --date-range 2025-08-01,2025-08-28 --include-category-stat
 
 ### 使用方法
 
-```
+```bash
 python extract_pdf_links.py [--file FILE] [--output OUTPUT] [--metadata_dir METADATA_DIR]
 ```
 
@@ -117,7 +125,7 @@ python extract_pdf_links.py [--file FILE] [--output OUTPUT] [--metadata_dir META
 
 ### 使用示例
 
-```
+```bash
 # 提取所有元数据文件中的PDF链接
 python extract_pdf_links.py --output all_pdf_links.txt
 
@@ -134,7 +142,7 @@ python extract_pdf_links.py --metadata_dir ./metadata --output pdf_links.txt
 
 ### 使用方法
 
-```
+```bash
 python export_to_csv.py [--input INPUT] [--output_dir OUTPUT_DIR] [--records_per_file RECORDS_PER_FILE]
 ```
 
@@ -143,12 +151,12 @@ python export_to_csv.py [--input INPUT] [--output_dir OUTPUT_DIR] [--records_per
 | 参数 | 类型 | 默认值 | 描述 |
 |------|------|--------|------|
 | `--input` | string | ./metadata/arxiv-metadata-oai-snapshot-202508.json | 输入的JSON文件路径 |
-| `--output_dir` | string | ./csv_output | 输出CSV文件的目录 |
+| `--output_dir` | string | ./metadata/csv | 输出CSV文件的目录 |
 | `--records_per_file` | int | 500 | 每个CSV文件包含的记录数 |
 
 ### 使用示例
 
-```
+```bash
 # 将默认JSON文件转换为CSV格式
 python export_to_csv.py
 
@@ -165,7 +173,7 @@ python export_to_csv.py --records_per_file 1000
 
 ### 使用方法
 
-```
+```bash
 python clean_json.py
 ```
 
@@ -182,7 +190,7 @@ python clean_json.py
 
 ### 使用方法
 
-```
+```bash
 python arxiv_converter.py [--file FILE] [--output OUTPUT] [PDF_URL ...]
 ```
 
@@ -196,7 +204,7 @@ python arxiv_converter.py [--file FILE] [--output OUTPUT] [PDF_URL ...]
 
 ### 使用示例
 
-```
+```bash
 # 转换单个PDF链接
 python arxiv_converter.py https://arxiv.org/pdf/2406.18629.pdf
 
@@ -209,6 +217,7 @@ python arxiv_converter.py --file links.txt --output gcs_links.txt
 工具会在 `./metadata` 目录下生成以下文件：
 
 1. `arxiv-metadata-oai-snapshot-YYYYMM.json` - 论文元数据文件，每行一个 JSON 对象
+2. `metadata-report-YYYYMM.md` - 元数据收集报告
 
 ### 文件格式说明
 
@@ -216,7 +225,7 @@ python arxiv_converter.py --file links.txt --output gcs_links.txt
 
 每行包含一篇论文的完整元数据：
 
-```
+```json
 {
   "id": "2508.19247v1",
   "authors": "Lin Li, et al.",
@@ -249,6 +258,11 @@ python arxiv_converter.py --file links.txt --output gcs_links.txt
 
 6. **网络连接**: 确保网络连接稳定，特别是在收集大量数据时。
 
+7. **GCS路径转换**: 生成的GCS链接格式是正确的，但需要注意同步延迟问题：
+   - arxiv.org网站上发布的论文与GCS存储桶之间存在大约7天的同步延迟
+   - 在论文发布后的7天内，生成的GCS链接虽然格式正确，但可能无法下载到PDF文件
+   - 7天后，PDF文件将可以在GCS中访问和下载
+
 ## 故障排除
 
 ### 1. 收集速度慢
@@ -271,6 +285,12 @@ python arxiv_converter.py --file links.txt --output gcs_links.txt
 - 是否过于频繁地请求数据
 - 日期格式是否正确
 
+### 4. 文件权限问题
+
+如果遇到文件写入错误，请检查：
+- 确保程序有写入 `metadata` 目录的权限
+- 检查磁盘空间是否充足
+
 ## 开发说明
 
 ### 代码结构
@@ -281,6 +301,7 @@ python arxiv_converter.py --file links.txt --output gcs_links.txt
 - `clean_json.py` - JSON数据清理工具
 - `arxiv_converter.py` - PDF链接到GCS路径转换工具
 - `check_gcs_status.py` - GCS存储桶状态检查工具
+- `config.yaml` - 配置文件，包含所有arXiv分类
 - `./metadata/` - 数据存储目录
 
 ### 主要函数
@@ -290,6 +311,7 @@ python arxiv_converter.py --file links.txt --output gcs_links.txt
 - `load_existing_metadata_files()` - 加载已存在的元数据
 - `save_metadata_files()` - 保存元数据到文件
 - `generate_report()` - 生成收集报告
+- `get_all_categories()` - 获取所有arXiv分类
 
 #### extract_pdf_links.py
 - `extract_pdf_links_from_file()` - 从指定的元数据文件中提取PDF下载链接
@@ -303,6 +325,9 @@ python arxiv_converter.py --file links.txt --output gcs_links.txt
 
 #### arxiv_converter.py
 - `convert_to_gcs_url()` - 将PDF链接转换为GCS路径
+- `extract_paper_id()` - 从PDF链接中提取论文ID
+- `get_category()` - 获取论文分类信息
+- `parse_year_month()` - 从论文ID解析年月信息
 
 ### 依赖库
 
@@ -314,6 +339,8 @@ python arxiv_converter.py --file links.txt --output gcs_links.txt
 - `datetime` - 日期处理 (Python标准库)
 - `os`, `re` - 文件和正则表达式处理 (Python标准库)
 - `csv` - CSV文件处理 (Python标准库)
+- `urllib` - URL处理 (Python标准库)
+- `concurrent.futures` - 并发处理 (Python标准库)
 
 ## 许可证
 
@@ -333,7 +360,7 @@ python arxiv_converter.py --file links.txt --output gcs_links.txt
 
 简要说明：
 1. **提取论文ID**: 从PDF链接中提取论文ID（如 `2406.18629` 或 `9507001`）
-2. **获取学科分类**: 优先从本地元数据文件获取，其次从链接或arXiv API获取
+2. **获取分类信息**: 优先从本地元数据文件获取，其次从链接或arXiv API获取
 3. **解析年月**: 从论文ID解析年月信息（如 `2406` 表示2024年6月）
 4. **组合GCS路径**: 根据论文年月使用不同的路径格式
    - 2007年3月之前的论文使用分类路径结构
@@ -425,12 +452,12 @@ https://arxiv.org/pdf/2505.00009v1.pdf
 
 输出GCS路径：
 ```
-gs://arxiv-dataset/arxiv/acc-phys/9507/9507001v2.pdf
-gs://arxiv-dataset/arxiv/astro-ph/0508/0508001v1.pdf
-gs://arxiv-dataset/arxiv/arxiv/0703/07030003v1.pdf
-gs://arxiv-dataset/arxiv/arxiv/0704/07040004v1.pdf
-gs://arxiv-dataset/arxiv/arxiv/2406/2406.18629v1.pdf
-gs://arxiv-dataset/arxiv/arxiv/2505/2505.00009v1.pdf
+https://storage.googleapis.com/arxiv-dataset/arxiv/acc-phys/pdf/9507/9507001v2.pdf
+https://storage.googleapis.com/arxiv-dataset/arxiv/astro-ph/pdf/0508/0508001v1.pdf
+https://storage.googleapis.com/arxiv-dataset/arxiv/arxiv/pdf/0703/07030003v1.pdf
+https://storage.googleapis.com/arxiv-dataset/arxiv/arxiv/pdf/0704/07040004v1.pdf
+https://storage.googleapis.com/arxiv-dataset/arxiv/arxiv/pdf/2406/2406.18629v1.pdf
+https://storage.googleapis.com/arxiv-dataset/arxiv/arxiv/pdf/2505/2505.00009v1.pdf
 ```
 
 ### 同步延迟说明
@@ -536,24 +563,24 @@ arXiv论文在GCS存储桶中的存储路径遵循特定的格式。本转换器
 
 使用分类路径结构：
 ```
-gs://arxiv-dataset/arxiv/{category}/{YYMM}/{paper_id}.pdf
+https://storage.googleapis.com/arxiv-dataset/arxiv/{category}/pdf/{YYMM}/{paper_id}{version}.pdf
 ```
 
 示例：
 ```
-gs://arxiv-dataset/arxiv/acc-phys/9507/9507001v2.pdf
+https://storage.googleapis.com/arxiv-dataset/arxiv/acc-phys/pdf/9507/9507001v2.pdf
 ```
 
 ##### 2007年4月及之后
 
 使用统一路径结构：
 ```
-gs://arxiv-dataset/arxiv/arxiv/{YYMM}/{paper_id}.pdf
+https://storage.googleapis.com/arxiv-dataset/arxiv/arxiv/pdf/{YYMM}/{paper_id}{version}.pdf
 ```
 
 示例：
 ```
-gs://arxiv-dataset/arxiv/arxiv/0704/07040004v1.pdf
+https://storage.googleapis.com/arxiv-dataset/arxiv/arxiv/pdf/0704/07040004v1.pdf
 ```
 
 #### 6. 特殊处理
@@ -583,7 +610,7 @@ from arxiv_converter import convert_to_gcs_url
 pdf_url = "https://arxiv.org/pdf/2406.18629.pdf"
 gcs_url = convert_to_gcs_url(pdf_url)
 print(gcs_url)
-# 输出: gs://arxiv-dataset/arxiv/arxiv/2406/2406.18629.pdf
+# 输出: https://storage.googleapis.com/arxiv-dataset/arxiv/arxiv/pdf/2406/2406.18629.pdf
 ```
 
 ### 版本处理
