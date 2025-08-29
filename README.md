@@ -489,11 +489,6 @@ https://storage.googleapis.com/arxiv-dataset/arxiv/arxiv/pdf/2505/2505.00009v1.p
 
 - Python 3.x
 - requests库
-
-### 许可证
-
-该工具为开源工具，可根据需要自由使用和修改。
-
 ---
 
 ## GCS链接转换规则说明
