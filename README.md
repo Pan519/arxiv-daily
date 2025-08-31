@@ -489,6 +489,14 @@ https://storage.googleapis.com/arxiv-dataset/arxiv/arxiv/pdf/2505/2505.00009v1.p
 
 - Python 3.x
 - requests库
+<<<<<<< Updated upstream
+=======
+
+### 许可证
+
+AGCPA v3.0
+
+>>>>>>> Stashed changes
 ---
 
 ## GCS链接转换规则说明
